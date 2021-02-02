@@ -8,15 +8,23 @@ import styled, {
 import { Typography } from "@material-ui/core";
 import theme from "./theme";
 import { FunctionComponent } from "react";
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./modules";
+import { Provider } from "react-redux";
 
 const Title = styled(Typography).attrs({ variant: "h2" })``;
 
 const App: FunctionComponent = () => {
+  const store = configureStore({
+    reducer: rootReducer,
+  });
   return (
     <MuiStylesProvider injectFirst>
       <StyledThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
-          <Title>Hello React</Title>
+          <Provider store={store}>
+            <Title>Hello React</Title>
+          </Provider>
         </MuiThemeProvider>
       </StyledThemeProvider>
     </MuiStylesProvider>
