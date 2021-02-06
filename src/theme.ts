@@ -33,5 +33,16 @@ export default createMuiTheme({
         width: "160px",
       },
     },
+    MuiSelect: {
+      root: {
+        display: "flex",
+        alignItems: "center",
+      },
+    },
+    MuiTableCell: {
+      root: {
+        backgroundColor: "#fff",
+      },
+    },
   },
 });
