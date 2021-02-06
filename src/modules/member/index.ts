@@ -1,4 +1,4 @@
-import * as memberOperations from "./operations";
+import memberOperations from "./operations";
 import reducer, { actions as memberActions } from "./reducers";
 import * as memberSelectors from "./selectors";
 

@@ -33,6 +33,14 @@ const config: webpack.Configuration = {
           compact: true,
         },
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
