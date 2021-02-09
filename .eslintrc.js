@@ -18,5 +18,6 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": 0,
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-types": "off",
   },
 };
