@@ -41,6 +41,31 @@ const config: webpack.Configuration = {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              compact: true,
+            },
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              svgo: {
+                // svgo options
+                plugins: [
+                  {
+                    removeViewBox: false,
+                  },
+                ],
+                floatPrecision: 2,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
