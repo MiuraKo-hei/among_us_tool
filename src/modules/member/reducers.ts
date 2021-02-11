@@ -34,13 +34,6 @@ const initialMembers: Member[] = [
     isDead: false,
     alibis: Array(RANGE).fill(false),
   },
-  {
-    memberId: uniqueId(),
-    color: colors.Orange,
-    name: "Orange",
-    isDead: false,
-    alibis: Array(RANGE).fill(false),
-  },
 ];
 export const initialState: State = {
   members: keyBy(initialMembers, "memberId"),
