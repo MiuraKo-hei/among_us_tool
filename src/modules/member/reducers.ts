@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { uniqueId, keyBy } from "lodash-es";
+import keyBy from "lodash-es/keyBy";
+import uniqueId from "lodash-es/uniqueId";
 import { ColorName, colors, RANGE } from "../../constant";
 import { eventActions } from "../event";
 

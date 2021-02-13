@@ -14,7 +14,7 @@ import {
 import ExportButton from "./ExportButton";
 import ImportButton from "./ImportButton";
 import AmongUsIcon from "../../assets/image/AmongUsIcon.jpg";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import MoreVertIcon from "../../assets/icons/MoreVert.svg";
 
 const StyledAppBar = styled(AppBar)``;
 const StyledToolbar = styled(Toolbar)`
@@ -49,6 +49,9 @@ const TwitterArea = styled("span")`
   align-items: flex-end;
 `;
 
+const StyledMoreVertIcon = styled(MoreVertIcon)`
+  fill: ${(props) => props.theme.palette.text.secondary};
+`;
 const Header: React.FunctionComponent = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -75,7 +78,7 @@ const Header: React.FunctionComponent = () => {
             aria-haspopup="true"
             onClick={handleMenu}
           >
-            <MoreVertIcon />
+            <StyledMoreVertIcon />
           </IconButton>
           <Menu
             id="menu-appbar"

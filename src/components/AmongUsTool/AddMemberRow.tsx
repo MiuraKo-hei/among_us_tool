@@ -3,7 +3,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { RANGE } from "../../constant";
 import { memberOperations } from "../../modules/member";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from "../../assets/icons/Add.svg";
+import styled from "styled-components";
+
+const StyledAddIcon = styled(AddIcon)`
+  fill: ${(props) => props.theme.palette.primary.main};
+`;
 
 const AddMemberRow: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -15,7 +20,7 @@ const AddMemberRow: React.FunctionComponent = () => {
       <TableCell>
         <Button
           color="primary"
-          startIcon={<AddIcon />}
+          startIcon={<StyledAddIcon />}
           onClick={() => {
             onClickAddButton();
           }}

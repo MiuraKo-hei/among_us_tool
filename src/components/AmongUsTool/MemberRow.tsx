@@ -16,7 +16,7 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 
-import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "../../assets/icons/Close.svg";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import EmergencyButtonImage from "../../assets/image/EmergencyButton.png";
@@ -33,6 +33,9 @@ const StyledIconButton = styled(IconButton).attrs({
   "aria-label": "close",
   tabindex: -1,
 })``;
+const StyledCloseIcon = styled(CloseIcon)`
+  fill: ${(props) => props.theme.palette.text.secondary};
+`;
 const Img = styled("img")`
   width: 30px;
   height: auto;
@@ -134,7 +137,7 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
               onClickCloseIcon(member.memberId);
             }}
           >
-            <CloseIcon />
+            <StyledCloseIcon />
           </StyledIconButton>
         </LastCellBody>
       </StyledTableCell>

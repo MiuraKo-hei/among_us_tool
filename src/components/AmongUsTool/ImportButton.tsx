@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import { uniqueId } from "lodash-es";
+import uniqueId from "lodash-es/uniqueId";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { colors, JsonFormat, RANGE } from "../../constant";
