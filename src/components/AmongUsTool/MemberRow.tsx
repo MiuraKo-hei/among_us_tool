@@ -20,7 +20,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import EmergencyButtonImage from "../../assets/image/EmergencyButton.png";
-import { Color, ColorName, colors, eventTypes } from "../../constant";
+import { ColorName, colors, eventTypes } from "../../constant";
 import { eventSelectors } from "../../modules/event";
 const MemberData = styled("div")`
   display: flex;
@@ -37,7 +37,10 @@ const Img = styled("img")`
 const NameTextField = styled(TextField)`
   width: 120px;
 `;
-const ButtonImg = styled(Img).attrs({ src: EmergencyButtonImage })<{
+const ButtonImg = styled(Img).attrs({
+  src: EmergencyButtonImage,
+  alt: "Button",
+})<{
   hasButton: boolean;
 }>`
   opacity: ${(props) => (props.hasButton ? 1 : 0.2)};
@@ -84,13 +87,14 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
               onChangeColor(member.memberId, e.target.value as ColorName);
             }}
           >
-            {Object.keys(colors).map((colorName) => (
-              <MenuItem value={colorName}>
-                <Img
-                  src={(colors[colorName as ColorName] as Color).image}
-                ></Img>
-              </MenuItem>
-            ))}
+            {Object.keys(colors).map((colorName) => {
+              const color = colors[colorName as ColorName];
+              return (
+                <MenuItem value={colorName}>
+                  <Img src={color.image} alt={color.name}></Img>
+                </MenuItem>
+              );
+            })}
           </Select>
           <NameTextField
             value={member.name}

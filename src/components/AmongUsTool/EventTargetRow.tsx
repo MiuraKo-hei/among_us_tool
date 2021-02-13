@@ -47,7 +47,7 @@ const EventTargetRow: React.FunctionComponent = () => {
             {members.map((member) => (
               <MenuItem value={member.memberId} key={member.memberId}>
                 <ImgWrapper>
-                  <Img src={member.color.image} />
+                  <Img src={member.color.image} alt={member.color.name} />
                 </ImgWrapper>
                 {member.name}
               </MenuItem>

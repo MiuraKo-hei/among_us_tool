@@ -62,7 +62,7 @@ const Header: React.FunctionComponent = () => {
   return (
     <StyledAppBar>
       <StyledToolbar>
-        <Img src={AmongUsIcon} />
+        <Img src={AmongUsIcon} alt="AmongUs" />
         <Title>状況整理ツール</Title>
         <Buttons>
           <ExportButton />

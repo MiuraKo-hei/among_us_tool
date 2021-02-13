@@ -8,7 +8,7 @@ const Img = styled("img")`
 `;
 
 const MemberImage: React.FunctionComponent<Props> = ({ color }) => {
-  return <Img src={color.image} />;
+  return <Img src={color.image} alt={color.name} />;
 };
 
 export default MemberImage;

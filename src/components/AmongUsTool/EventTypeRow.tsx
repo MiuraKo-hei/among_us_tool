@@ -49,15 +49,15 @@ const EventTypeRow: React.FunctionComponent = () => {
               <Typography>_</Typography>
             </MenuItem>
             <MenuItem value={eventTypes.Dead}>
-              <Img src={DeadImage} />
+              <Img src={DeadImage} alt="Dead" />
               <Typography>死亡</Typography>
             </MenuItem>
             <MenuItem value={eventTypes.Button}>
-              <Img src={EmergencyButtonImage} />
+              <Img src={EmergencyButtonImage} alt="EmergencyButton" />
               <Typography>会議ボタン</Typography>
             </MenuItem>
             <MenuItem value={eventTypes.Eject}>
-              <Img src={EjectImage} />
+              <Img src={EjectImage} alt="Eject" />
               <Typography>追放</Typography>
             </MenuItem>
           </StyledSelect>
