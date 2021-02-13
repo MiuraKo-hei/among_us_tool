@@ -29,7 +29,10 @@ const MemberData = styled("div")`
     margin-right: ${(props) => props.theme.spacing(0.5)};
   }
 `;
-const StyledIconButton = styled(IconButton)``;
+const StyledIconButton = styled(IconButton).attrs({
+  "aria-label": "close",
+  tabindex: -1,
+})``;
 const Img = styled("img")`
   width: 30px;
   height: auto;

@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import ExportButton from "./ExportButton";
 import ImportButton from "./ImportButton";
-import AmongUsIcon from "../../assets/image/AmongUsIcon.png";
+import AmongUsIcon from "../../assets/image/AmongUsIcon.jpg";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const StyledAppBar = styled(AppBar)``;
