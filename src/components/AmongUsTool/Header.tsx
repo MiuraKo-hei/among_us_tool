@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import ExportButton from "./ExportButton";
 import ImportButton from "./ImportButton";
-import AmongUsIcon from "../../assets/image/AmongUsIcon.jpg";
+import Icon from "../../assets/image/Icon.png";
 import MoreVertIcon from "../../assets/icons/MoreVert.svg";
 
 const StyledAppBar = styled(AppBar)``;
@@ -65,8 +65,8 @@ const Header: React.FunctionComponent = () => {
   return (
     <StyledAppBar>
       <StyledToolbar>
-        <Img src={AmongUsIcon} alt="AmongUs" />
-        <Title>状況整理ツール</Title>
+        <Img src={Icon} alt="AmongUs" />
+        <Title>AmongUs状況整理ツール</Title>
         <Buttons>
           <ExportButton />
           <ImportButton />

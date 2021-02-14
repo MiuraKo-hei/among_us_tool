@@ -1,6 +1,7 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -68,7 +69,12 @@ const config: webpack.Configuration = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "./src/public", to: "public" }],
+    }),
+  ],
   devServer: {
     host: "localhost",
     contentBase: path.join(__dirname, "dist"),
