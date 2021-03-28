@@ -17,7 +17,10 @@ const eventSlice = createSlice({
   reducers: {
     updateMemberId: (
       state,
-      action: PayloadAction<{ eventIndex: number; memberId: MemberId }>
+      action: PayloadAction<{
+        eventIndex: number;
+        memberId: MemberId | undefined;
+      }>
     ) => {
       const { eventIndex, memberId } = action.payload;
       state.events[eventIndex].targetMemberId = memberId;

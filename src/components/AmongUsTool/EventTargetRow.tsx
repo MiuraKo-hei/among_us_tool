@@ -25,7 +25,10 @@ const EventTargetRow: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const members = memberSelectors.useMembers();
   const events = eventSelectors.useEvents();
-  const onChangeTargetMember = (eventIndex: number, value: MemberId) => {
+  const onChangeTargetMember = (
+    eventIndex: number,
+    value: MemberId | undefined
+  ) => {
     dispatch(eventOperations.updateMemberId({ eventIndex, memberId: value }));
   };
   return (
@@ -36,7 +39,7 @@ const EventTargetRow: React.FunctionComponent = () => {
           <StyledSelect
             value={event.targetMemberId || ""}
             onChange={(e) => {
-              const value = e.target.value as EventType;
+              const value = e.target.value as MemberId | undefined;
               onChangeTargetMember(eventIndex, value);
             }}
           >
