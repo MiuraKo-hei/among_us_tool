@@ -130,6 +130,7 @@ const memberSlice = createSlice({
         if (target) {
           target.alibis = Array(RANGE).fill(false);
           target.hasButton = true;
+          target.ejected = false;
           state.members[memberId] = target;
         }
       });
