@@ -10,11 +10,22 @@ import {
   StylesProvider as MuiStylesProvider,
 } from "@material-ui/core/styles";
 import AmongUsTool from "./components/AmongUsTool";
+import { persistStore, persistReducer } from "redux-persist";
+
+import storage from "redux-persist/lib/storage";
+import { PersistGate } from "redux-persist/integration/react";
 
 const App: FunctionComponent = () => {
+  const persistConfig = {
+    key: "root-v1",
+    storage,
+  };
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
   const store = configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
   });
+  const persistor = persistStore(store);
   return (
     <>
       <CssBaseline />
@@ -22,7 +33,9 @@ const App: FunctionComponent = () => {
         <StyledThemeProvider theme={theme}>
           <MuiThemeProvider theme={theme}>
             <Provider store={store}>
-              <AmongUsTool />
+              <PersistGate loading={null} persistor={persistor}>
+                <AmongUsTool />
+              </PersistGate>
             </Provider>
           </MuiThemeProvider>
         </StyledThemeProvider>
