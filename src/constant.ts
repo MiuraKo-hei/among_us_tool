@@ -1,5 +1,5 @@
 // 最大 ボタンx10, 追放・キルx8
-export const RANGE = 18;
+export const RANGE = 8;
 
 import RedImage from "./assets/image/Red.png";
 import BlueImage from "./assets/image/Blue.png";
@@ -79,13 +79,6 @@ export const colors: Record<ColorName, Color> = {
     name: "Lime",
     image: LimeImage,
   },
-};
-
-export type EventType = "Dead" | "Button" | "Eject";
-export const eventTypes: Record<EventType, EventType> = {
-  Button: "Button",
-  Dead: "Dead",
-  Eject: "Eject",
 };
 
 export type JsonFormat = {

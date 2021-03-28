@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RANGE, EventType } from "../../constant";
+import { RANGE } from "../../constant";
 import { MemberId } from "../member";
 
 import { State } from "./types";
@@ -7,7 +7,6 @@ import { State } from "./types";
 export const initialState: State = {
   events: Array(RANGE).fill({
     targetMemberId: undefined,
-    type: undefined,
   }),
   resetCounter: 0,
 };
@@ -16,16 +15,12 @@ const eventSlice = createSlice({
   name: "event",
   initialState,
   reducers: {
-    updateType: (
-      state,
-      action: PayloadAction<{ eventIndex: number; type: EventType }>
-    ) => {
-      const { eventIndex, type } = action.payload;
-      state.events[eventIndex].type = type;
-    },
     updateMemberId: (
       state,
-      action: PayloadAction<{ eventIndex: number; memberId: MemberId }>
+      action: PayloadAction<{
+        eventIndex: number;
+        memberId: MemberId | undefined;
+      }>
     ) => {
       const { eventIndex, memberId } = action.payload;
       state.events[eventIndex].targetMemberId = memberId;

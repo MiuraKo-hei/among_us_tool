@@ -2,8 +2,6 @@ import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { CssBaseline } from "@material-ui/core";
 import theme from "./theme";
 import { FunctionComponent } from "react";
-import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "./modules";
 import { Provider } from "react-redux";
 import {
   MuiThemeProvider,
@@ -11,10 +9,12 @@ import {
 } from "@material-ui/core/styles";
 import AmongUsTool from "./components/AmongUsTool";
 
+import { PersistGate } from "redux-persist/integration/react";
+import ErrorBoundary from "./components/ErrorBoundary";
+import configureStore from "./configureStore";
+
 const App: FunctionComponent = () => {
-  const store = configureStore({
-    reducer: rootReducer,
-  });
+  const { store, persistor } = configureStore();
   return (
     <>
       <CssBaseline />
@@ -22,7 +22,11 @@ const App: FunctionComponent = () => {
         <StyledThemeProvider theme={theme}>
           <MuiThemeProvider theme={theme}>
             <Provider store={store}>
-              <AmongUsTool />
+              <PersistGate loading={null} persistor={persistor}>
+                <ErrorBoundary persistor={persistor}>
+                  <AmongUsTool />
+                </ErrorBoundary>
+              </PersistGate>
             </Provider>
           </MuiThemeProvider>
         </StyledThemeProvider>

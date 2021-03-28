@@ -6,9 +6,9 @@ import { memberSelectors } from "../../modules/member";
 import EventNumberRow from "./EventNumberRow";
 import MemoRow from "./MemoRow";
 import MemberRow from "./MemberRow";
-import EventTypeRow from "./EventTypeRow";
 import EventTargetRow from "./EventTargetRow";
 import AddMemberRow from "./AddMemberRow";
+import Usage from "./Usage";
 
 const Wrapper = styled("div")`
   min-height: 100vh;
@@ -29,7 +29,7 @@ const StyledTable = styled(Table).attrs({ size: "small" })`
       left: 0;
       width: 100%;
       height: 100%;
-      border-right: 1px solid rgba(224, 224, 224, 1);
+      border-right: 2px solid rgba(224, 224, 224, 1);
     }
   }
 `;
@@ -43,7 +43,6 @@ const AmongUsTool: React.FunctionComponent = () => {
         <StyledTable>
           <TableHead>
             <EventNumberRow />
-            <EventTypeRow />
             <EventTargetRow />
             <MemoRow />
           </TableHead>
@@ -55,6 +54,7 @@ const AmongUsTool: React.FunctionComponent = () => {
           </TableBody>
         </StyledTable>
       </TableContainer>
+      <Usage />
     </Wrapper>
   );
 };

@@ -1,39 +1,43 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import keyBy from "lodash-es/keyBy";
-import uniqueId from "lodash-es/uniqueId";
 import { ColorName, colors, RANGE } from "../../constant";
+import { getUniqueId } from "../../utils/string";
 import { eventActions } from "../event";
 
 import { State, MemberId, Member } from "./types";
 
 const initialMembers: Member[] = [
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Red,
     name: "Red",
-    isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
+    ejected: false,
   },
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Blue,
     name: "Blue",
-    isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
+    ejected: false,
   },
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Green,
     name: "Green",
-    isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
+    ejected: false,
   },
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Yellow,
     name: "Yellow",
-    isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
+    ejected: false,
   },
 ];
 export const initialState: State = {
@@ -84,11 +88,12 @@ const memberSlice = createSlice({
     },
     addMember: (state) => {
       const emptyMember: Member = {
-        memberId: uniqueId(),
+        memberId: getUniqueId(),
         color: colors.White,
         name: "",
-        isDead: false,
         alibis: Array(RANGE).fill(false),
+        hasButton: true,
+        ejected: false,
       };
       state.members[emptyMember.memberId] = emptyMember;
       state.displayList.push(emptyMember.memberId);
@@ -103,6 +108,20 @@ const memberSlice = createSlice({
       state.members = keyBy(members, "memberId");
       state.displayList = members.map((m) => m.memberId);
     },
+    toggleHasButton: (state, action: PayloadAction<{ memberId: MemberId }>) => {
+      const member = state.members[action.payload.memberId];
+      if (member) {
+        member.hasButton = !member.hasButton;
+        state.members[action.payload.memberId] = member;
+      }
+    },
+    toggleEjected: (state, action: PayloadAction<{ memberId: MemberId }>) => {
+      const member = state.members[action.payload.memberId];
+      if (member) {
+        member.ejected = !member.ejected;
+        state.members[action.payload.memberId] = member;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(eventActions.reset, (state) => {
@@ -110,6 +129,8 @@ const memberSlice = createSlice({
         const target = state.members[memberId];
         if (target) {
           target.alibis = Array(RANGE).fill(false);
+          target.hasButton = true;
+          target.ejected = false;
           state.members[memberId] = target;
         }
       });
