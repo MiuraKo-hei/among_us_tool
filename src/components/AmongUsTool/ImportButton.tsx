@@ -4,6 +4,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { colors, JsonFormat, RANGE } from "../../constant";
 import { Member, memberOperations } from "../../modules/member";
+import { isJsonFormat } from "../../utils/parseJson";
 
 const ImportButton: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -11,17 +12,24 @@ const ImportButton: React.FunctionComponent = () => {
     const fr = new FileReader();
     fr.onload = (e) => {
       if (e.target?.result && typeof e.target.result === "string") {
-        const parsed: JsonFormat = JSON.parse(e.target.result);
-        const members: Member[] = parsed.members.map((member) => ({
-          memberId: uniqueId(),
-          color: colors[member.color],
-          name: member.name,
-          alibis: Array(RANGE).fill(false),
-          hasButton: true,
-          ejected: false,
-        }));
-        console.log(members);
-        dispatch(memberOperations.importMembers({ members }));
+        try {
+          const parsed: JsonFormat = JSON.parse(e.target.result);
+          if (isJsonFormat(parsed)) {
+            const members: Member[] = parsed.members.map((member) => ({
+              memberId: uniqueId(),
+              color: colors[member.color],
+              name: member.name,
+              alibis: Array(RANGE).fill(false),
+              hasButton: true,
+              ejected: false,
+            }));
+            dispatch(memberOperations.importMembers({ members }));
+          } else {
+            alert("ファイルに不備があります。");
+          }
+        } catch {
+          alert("エラーが発生しました。");
+        }
       }
     };
     const inputElement = document.createElement("input");
