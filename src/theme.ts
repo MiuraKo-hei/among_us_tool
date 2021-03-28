@@ -50,5 +50,22 @@ export default createMuiTheme({
         gridTemplateColumns: "1fr 1fr 1fr",
       },
     },
+    MuiList: {
+      root: {
+        padding: "8px",
+      },
+    },
+    MuiListItem: {
+      root: {
+        "&$selected": {
+          borderRadius: "8px",
+        },
+      },
+      button: {
+        "&:hover": {
+          borderRadius: "8px",
+        },
+      },
+    },
   },
 });
