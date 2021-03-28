@@ -14,23 +14,25 @@ import {
   TextField,
   IconButton,
   FormControlLabel,
+  Typography,
+  Button,
 } from "@material-ui/core";
 
 import CloseIcon from "../../assets/icons/Close.svg";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import EmergencyButtonImage from "../../assets/image/EmergencyButton.png";
+import EmergencyButtonPng from "../../assets/image/EmergencyButton.png";
 import { ColorName, colors } from "../../constant";
 import { eventSelectors } from "../../modules/event";
-import EjectImage from "../../assets/image/Eject.png";
+import EjectPng from "../../assets/image/Eject.png";
 const MemberData = styled("div")`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   & > :not(:last-child) {
     margin-right: ${(props) => props.theme.spacing(0.5)};
   }
 `;
-const StyledIconButton = styled(IconButton).attrs({
+const StyledCloseIconButton = styled(IconButton).attrs({
   "aria-label": "close",
   tabindex: -1,
 })``;
@@ -44,21 +46,33 @@ const Img = styled("img")`
 const NameTextField = styled(TextField)`
   width: 120px;
 `;
-const ButtonImg = styled(Img).attrs({
-  src: EmergencyButtonImage,
+const ImgBase = styled(Img)``;
+const ButtonImg = styled(ImgBase).attrs({
+  src: EmergencyButtonPng,
   alt: "Button",
-})<{
-  hasButton: boolean;
-}>`
-  opacity: ${(props) => (props.hasButton ? 1 : 0.2)};
-`;
-const EjectedImg = styled(Img).attrs({
-  src: EjectImage,
+})``;
+const EjectedImg = styled(ImgBase).attrs({
+  src: EjectPng,
   alt: "Eject",
-})<{
-  ejected: boolean;
+})``;
+
+const IconLabel = styled(Typography).attrs({
+  variant: "body2",
+})`
+  padding-top: ${(props) => props.theme.spacing(0.5)};
+  line-height: 1;
+`;
+const StyledButton = styled(Button).attrs({ size: "small" })<{
+  checked: boolean;
 }>`
-  opacity: ${(props) => (props.ejected ? 1 : 0.2)};
+  .MuiButton-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  ${ImgBase}, ${IconLabel} {
+    opacity: ${(props) => (props.checked ? 1 : 0.2)};
+  }
 `;
 const StyledTableCell = styled(TableCell)<{ isAlive: boolean }>`
   background-color: ${(props) =>
@@ -118,25 +132,30 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
             })}
           </Select>
           <NameTextField
+            variant="standard"
             value={member.name}
             onChange={(e) => {
               onChangeName(member.memberId, e.target.value);
             }}
           />
-          <IconButton
+          <StyledButton
+            checked={hasButton}
             onClick={() => {
               onClickButton(member.memberId);
             }}
           >
-            <ButtonImg hasButton={hasButton} />
-          </IconButton>
-          <IconButton
+            <ButtonImg />
+            <IconLabel>会議</IconLabel>
+          </StyledButton>
+          <StyledButton
             onClick={() => {
               onClickEjected(member.memberId);
             }}
+            checked={member.ejected}
           >
-            <EjectedImg ejected={member.ejected} />
-          </IconButton>
+            <EjectedImg />
+            <IconLabel>追放</IconLabel>
+          </StyledButton>
         </MemberData>
       </StyledTableCell>
       {member.alibis.map((alibi, eventIndex) => (
@@ -160,13 +179,13 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
       ))}
       <StyledTableCell isAlive>
         <LastCellBody>
-          <StyledIconButton
+          <StyledCloseIconButton
             onClick={() => {
               onClickCloseIcon(member.memberId);
             }}
           >
             <StyledCloseIcon />
-          </StyledIconButton>
+          </StyledCloseIconButton>
         </LastCellBody>
       </StyledTableCell>
     </TableRow>

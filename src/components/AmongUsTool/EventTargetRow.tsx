@@ -1,10 +1,15 @@
-import { TableRow, TableCell, Select, MenuItem } from "@material-ui/core";
+import {
+  TableRow,
+  TableCell,
+  Select,
+  MenuItem,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { eventOperations, eventSelectors } from "../../modules/event";
 import styled from "styled-components";
 import { MemberId, memberSelectors } from "../../modules/member";
-
 const ImgWrapper = styled("span")`
   width: 32px;
   margin-right: ${(props) => props.theme.spacing(0.5)};
@@ -33,7 +38,9 @@ const EventTargetRow: React.FunctionComponent = () => {
   };
   return (
     <TableRow>
-      <TableCell>死体</TableCell>
+      <TableCell>
+        <Typography>死体</Typography>
+      </TableCell>
       {events.map((event, eventIndex) => (
         <TableCell>
           <StyledSelect

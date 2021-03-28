@@ -1,5 +1,5 @@
 // 最大 ボタンx10, 追放・キルx8
-export const RANGE = 18;
+export const RANGE = 8;
 
 import RedImage from "./assets/image/Red.png";
 import BlueImage from "./assets/image/Blue.png";
