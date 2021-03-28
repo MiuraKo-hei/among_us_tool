@@ -70,7 +70,7 @@ const config: webpack.Configuration = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({ template: "./src/index_dev.html" }),
     new CopyWebpackPlugin({
       patterns: [{ from: "./src/public", to: "public" }],
     }),
