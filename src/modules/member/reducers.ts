@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import keyBy from "lodash-es/keyBy";
-import uniqueId from "lodash-es/uniqueId";
 import { ColorName, colors, RANGE } from "../../constant";
+import { getUniqueId } from "../../utils/string";
 import { eventActions } from "../event";
 
 import { State, MemberId, Member } from "./types";
 
 const initialMembers: Member[] = [
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Red,
     name: "Red",
     alibis: Array(RANGE).fill(false),
@@ -16,7 +16,7 @@ const initialMembers: Member[] = [
     ejected: false,
   },
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Blue,
     name: "Blue",
     alibis: Array(RANGE).fill(false),
@@ -24,7 +24,7 @@ const initialMembers: Member[] = [
     ejected: false,
   },
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Green,
     name: "Green",
     alibis: Array(RANGE).fill(false),
@@ -32,7 +32,7 @@ const initialMembers: Member[] = [
     ejected: false,
   },
   {
-    memberId: uniqueId(),
+    memberId: getUniqueId(),
     color: colors.Yellow,
     name: "Yellow",
     alibis: Array(RANGE).fill(false),
@@ -88,7 +88,7 @@ const memberSlice = createSlice({
     },
     addMember: (state) => {
       const emptyMember: Member = {
-        memberId: uniqueId(),
+        memberId: getUniqueId(),
         color: colors.White,
         name: "",
         alibis: Array(RANGE).fill(false),
