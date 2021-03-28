@@ -50,9 +50,6 @@ const EventTargetRow: React.FunctionComponent = () => {
               onChangeTargetMember(eventIndex, value);
             }}
           >
-            <MenuItem value={undefined} key="_">
-              _
-            </MenuItem>
             {members.map((member) => (
               <MenuItem value={member.memberId} key={member.memberId}>
                 <ImgWrapper>
@@ -61,6 +58,9 @@ const EventTargetRow: React.FunctionComponent = () => {
                 {member.name}
               </MenuItem>
             ))}
+            <MenuItem value={undefined} key="_">
+              _
+            </MenuItem>
           </StyledSelect>
         </TableCell>
       ))}

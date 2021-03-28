@@ -81,6 +81,7 @@ const StyledTableCell = styled(TableCell)<{ isAlive: boolean }>`
 const LastCellBody = styled("div")`
   display: flex;
 `;
+const StyledSelect = styled(Select)``;
 type Props = {
   member: Member;
 };
@@ -115,7 +116,7 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
     <TableRow>
       <StyledTableCell isAlive={isAlive}>
         <MemberData>
-          <Select
+          <StyledSelect
             variant="standard"
             value={member.color.name}
             onChange={(e) => {
@@ -130,7 +131,7 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
                 </MenuItem>
               );
             })}
-          </Select>
+          </StyledSelect>
           <NameTextField
             variant="standard"
             value={member.name}

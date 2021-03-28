@@ -44,5 +44,11 @@ export default createMuiTheme({
         backgroundColor: "#fff",
       },
     },
+    MuiMenu: {
+      list: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+      },
+    },
   },
 });
