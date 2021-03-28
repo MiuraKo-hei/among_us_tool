@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { eventTypes } from "../../constant";
 import { isTruthy } from "../../utils/array";
 import { Member, MemberId } from "./types";
 
@@ -16,9 +15,9 @@ const useHasButton = (memberId: MemberId): boolean =>
 
 const useIsAlive = (memberId: MemberId): boolean =>
   useSelector((state) => {
-    const killed = state.event.events
-      .filter((t) => t.targetMemberId === memberId)
-      .some((t) => t.type === eventTypes.Dead);
+    const killed = state.event.events.some(
+      (t) => t.targetMemberId === memberId
+    );
     const ejected = state.member.members[memberId]?.ejected || false;
     return !killed && !ejected;
   });

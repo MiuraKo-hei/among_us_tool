@@ -1,7 +1,6 @@
 import { TableRow, TableCell, Select, MenuItem } from "@material-ui/core";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { EventType } from "../../constant";
 import { eventOperations, eventSelectors } from "../../modules/event";
 import styled from "styled-components";
 import { MemberId, memberSelectors } from "../../modules/member";
@@ -31,7 +30,7 @@ const EventTargetRow: React.FunctionComponent = () => {
   };
   return (
     <TableRow>
-      <TableCell>対象者</TableCell>
+      <TableCell>死体</TableCell>
       {events.map((event, eventIndex) => (
         <TableCell>
           <StyledSelect

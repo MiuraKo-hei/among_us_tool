@@ -20,7 +20,7 @@ import CloseIcon from "../../assets/icons/Close.svg";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import EmergencyButtonImage from "../../assets/image/EmergencyButton.png";
-import { ColorName, colors, eventTypes } from "../../constant";
+import { ColorName, colors } from "../../constant";
 import { eventSelectors } from "../../modules/event";
 import EjectImage from "../../assets/image/Eject.png";
 const MemberData = styled("div")`
@@ -141,7 +141,7 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
       </StyledTableCell>
       {member.alibis.map((alibi, eventIndex) => (
         <StyledTableCell isAlive={isAlive}>
-          {events[eventIndex].type === eventTypes.Dead && (
+          {events[eventIndex].targetMemberId && (
             <FormControlLabel
               label="証明"
               control={

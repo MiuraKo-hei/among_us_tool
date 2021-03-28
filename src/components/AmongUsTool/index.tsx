@@ -6,7 +6,6 @@ import { memberSelectors } from "../../modules/member";
 import EventNumberRow from "./EventNumberRow";
 import MemoRow from "./MemoRow";
 import MemberRow from "./MemberRow";
-import EventTypeRow from "./EventTypeRow";
 import EventTargetRow from "./EventTargetRow";
 import AddMemberRow from "./AddMemberRow";
 
@@ -43,7 +42,6 @@ const AmongUsTool: React.FunctionComponent = () => {
         <StyledTable>
           <TableHead>
             <EventNumberRow />
-            <EventTypeRow />
             <EventTargetRow />
             <MemoRow />
           </TableHead>

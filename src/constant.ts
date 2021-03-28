@@ -81,11 +81,6 @@ export const colors: Record<ColorName, Color> = {
   },
 };
 
-export type EventType = "Dead";
-export const eventTypes: Record<EventType, EventType> = {
-  Dead: "Dead",
-};
-
 export type JsonFormat = {
   members: Array<{
     color: ColorName;
