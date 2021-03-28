@@ -82,6 +82,9 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
   const onClickCloseIcon = (memberId: MemberId) => {
     dispatch(memberOperations.removeMember({ memberId }));
   };
+  const onClickButton = (memberId: MemberId) => {
+    dispatch(memberOperations.toggleHasButton({ memberId }));
+  };
   return (
     <TableRow>
       <StyledTableCell isAlive={isAlive}>
@@ -108,7 +111,13 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
               onChangeName(member.memberId, e.target.value);
             }}
           />
-          <ButtonImg hasButton={hasButton} />
+          <IconButton
+            onClick={() => {
+              onClickButton(member.memberId);
+            }}
+          >
+            <ButtonImg hasButton={hasButton} />
+          </IconButton>
         </MemberData>
       </StyledTableCell>
       {member.alibis.map((alibi, eventIndex) => (

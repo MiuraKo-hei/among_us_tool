@@ -81,9 +81,8 @@ export const colors: Record<ColorName, Color> = {
   },
 };
 
-export type EventType = "Dead" | "Button" | "Eject";
+export type EventType = "Dead" | "Eject";
 export const eventTypes: Record<EventType, EventType> = {
-  Button: "Button",
   Dead: "Dead",
   Eject: "Eject",
 };

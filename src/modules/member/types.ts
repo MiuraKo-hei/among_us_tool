@@ -7,6 +7,7 @@ export type Member = {
   name: string;
   isDead: boolean;
   alibis: boolean[];
+  hasButton: boolean;
 };
 export type State = {
   members: { [x in MemberId]?: Member };

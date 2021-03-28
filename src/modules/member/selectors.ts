@@ -10,9 +10,8 @@ const useMembers = (): Member[] =>
 
 const useHasButton = (memberId: MemberId): boolean =>
   useSelector((state) => {
-    return state.event.events
-      .filter((t) => t.targetMemberId === memberId)
-      .every((t) => t.type !== eventTypes.Button);
+    const member = state.member.members[memberId];
+    return member?.hasButton || false;
   });
 
 const useIsAlive = (memberId: MemberId): boolean =>

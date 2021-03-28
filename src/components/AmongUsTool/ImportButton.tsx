@@ -18,6 +18,7 @@ const ImportButton: React.FunctionComponent = () => {
           name: member.name,
           isDead: false,
           alibis: Array(RANGE).fill(false),
+          hasButton: true,
         }));
         console.log(members);
         dispatch(memberOperations.importMembers({ members }));

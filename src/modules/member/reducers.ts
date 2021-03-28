@@ -13,6 +13,7 @@ const initialMembers: Member[] = [
     name: "Red",
     isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
   },
   {
     memberId: uniqueId(),
@@ -20,6 +21,7 @@ const initialMembers: Member[] = [
     name: "Blue",
     isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
   },
   {
     memberId: uniqueId(),
@@ -27,6 +29,7 @@ const initialMembers: Member[] = [
     name: "Green",
     isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
   },
   {
     memberId: uniqueId(),
@@ -34,6 +37,7 @@ const initialMembers: Member[] = [
     name: "Yellow",
     isDead: false,
     alibis: Array(RANGE).fill(false),
+    hasButton: true,
   },
 ];
 export const initialState: State = {
@@ -89,6 +93,7 @@ const memberSlice = createSlice({
         name: "",
         isDead: false,
         alibis: Array(RANGE).fill(false),
+        hasButton: true,
       };
       state.members[emptyMember.memberId] = emptyMember;
       state.displayList.push(emptyMember.memberId);
@@ -103,6 +108,13 @@ const memberSlice = createSlice({
       state.members = keyBy(members, "memberId");
       state.displayList = members.map((m) => m.memberId);
     },
+    toggleHasButton: (state, action: PayloadAction<{ memberId: MemberId }>) => {
+      const member = state.members[action.payload.memberId];
+      if (member) {
+        member.hasButton = !member.hasButton;
+        state.members[action.payload.memberId] = member;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(eventActions.reset, (state) => {
@@ -110,6 +122,7 @@ const memberSlice = createSlice({
         const target = state.members[memberId];
         if (target) {
           target.alibis = Array(RANGE).fill(false);
+          target.hasButton = true;
           state.members[memberId] = target;
         }
       });
