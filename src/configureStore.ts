@@ -8,6 +8,7 @@ import { Persistor } from "redux-persist/es/types";
 const persistConfig = {
   key: "root-v1",
   storage,
+  blacklist: ["usage"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

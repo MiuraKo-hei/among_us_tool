@@ -10,11 +10,14 @@ import {
   IconButton,
   MenuItem,
   Link,
+  Button,
 } from "@material-ui/core";
 import ExportButton from "./ExportButton";
 import ImportButton from "./ImportButton";
 import Icon from "../../assets/image/Icon.png";
 import MoreVertIcon from "../../assets/icons/MoreVert.svg";
+import { usageOperations } from "../../modules/usage";
+import { useDispatch } from "react-redux";
 
 const StyledAppBar = styled(AppBar)``;
 const StyledToolbar = styled(Toolbar)`
@@ -34,9 +37,15 @@ const Img = styled("img")`
   margin-right: ${(props) => props.theme.spacing(1)};
   border-radius: 8px;
 `;
-const Title = styled(Typography).attrs({ variant: "h6" })`
+const TitleArea = styled("div")`
+  display: flex;
   flex-grow: 1;
+  align-items: center;
+  & > *:not(:last-child) {
+    margin-right: ${(props) => props.theme.spacing(1)};
+  }
 `;
+const Title = styled(Typography).attrs({ variant: "h6" })``;
 const Buttons = styled("span")`
   & > *:not(:last-child) {
     margin-right: ${(props) => props.theme.spacing(2)};
@@ -55,18 +64,26 @@ const StyledMoreVertIcon = styled(MoreVertIcon)`
 const Header: React.FunctionComponent = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const openUsage = () => {
+    dispatch(usageOperations.open());
+  };
 
   return (
     <StyledAppBar>
       <StyledToolbar>
         <Img src={Icon} alt="AmongUs" />
-        <Title>AmongUs状況整理ツール</Title>
+        <TitleArea>
+          <Title>AmongUs状況整理ツール</Title>
+          <Button onClick={openUsage}>説明</Button>
+        </TitleArea>
+
         <Buttons>
           <ExportButton />
           <ImportButton />

@@ -8,6 +8,7 @@ import MemoRow from "./MemoRow";
 import MemberRow from "./MemberRow";
 import EventTargetRow from "./EventTargetRow";
 import AddMemberRow from "./AddMemberRow";
+import Usage from "./Usage";
 
 const Wrapper = styled("div")`
   min-height: 100vh;
@@ -53,6 +54,7 @@ const AmongUsTool: React.FunctionComponent = () => {
           </TableBody>
         </StyledTable>
       </TableContainer>
+      <Usage />
     </Wrapper>
   );
 };
