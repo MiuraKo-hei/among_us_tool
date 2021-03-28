@@ -81,10 +81,9 @@ export const colors: Record<ColorName, Color> = {
   },
 };
 
-export type EventType = "Dead" | "Eject";
+export type EventType = "Dead";
 export const eventTypes: Record<EventType, EventType> = {
   Dead: "Dead",
-  Eject: "Eject",
 };
 
 export type JsonFormat = {

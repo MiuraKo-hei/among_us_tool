@@ -16,9 +16,11 @@ const useHasButton = (memberId: MemberId): boolean =>
 
 const useIsAlive = (memberId: MemberId): boolean =>
   useSelector((state) => {
-    return state.event.events
+    const killed = state.event.events
       .filter((t) => t.targetMemberId === memberId)
-      .every((t) => t.type !== eventTypes.Dead && t.type !== eventTypes.Eject);
+      .some((t) => t.type === eventTypes.Dead);
+    const ejected = state.member.members[memberId]?.ejected || false;
+    return !killed && !ejected;
   });
 
 export { useMembers, useHasButton, useIsAlive };

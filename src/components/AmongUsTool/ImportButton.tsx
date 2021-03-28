@@ -16,9 +16,9 @@ const ImportButton: React.FunctionComponent = () => {
           memberId: uniqueId(),
           color: colors[member.color],
           name: member.name,
-          isDead: false,
           alibis: Array(RANGE).fill(false),
           hasButton: true,
+          ejected: false,
         }));
         console.log(members);
         dispatch(memberOperations.importMembers({ members }));

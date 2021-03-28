@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 import { EventType, eventTypes } from "../../constant";
 import { eventOperations, eventSelectors } from "../../modules/event";
 import DeadImage from "../../assets/image/DeadCharacter.png";
-import EjectImage from "../../assets/image/Eject.png";
 import styled from "styled-components";
 
 const Img = styled("img")`
@@ -50,10 +49,6 @@ const EventTypeRow: React.FunctionComponent = () => {
             <MenuItem value={eventTypes.Dead}>
               <Img src={DeadImage} alt="Dead" />
               <Typography>死亡</Typography>
-            </MenuItem>
-            <MenuItem value={eventTypes.Eject}>
-              <Img src={EjectImage} alt="Eject" />
-              <Typography>追放</Typography>
             </MenuItem>
           </StyledSelect>
         </TableCell>

@@ -5,9 +5,9 @@ export type Member = {
   memberId: MemberId;
   color: Color;
   name: string;
-  isDead: boolean;
   alibis: boolean[];
   hasButton: boolean;
+  ejected: boolean;
 };
 export type State = {
   members: { [x in MemberId]?: Member };

@@ -22,6 +22,7 @@ import styled from "styled-components";
 import EmergencyButtonImage from "../../assets/image/EmergencyButton.png";
 import { ColorName, colors, eventTypes } from "../../constant";
 import { eventSelectors } from "../../modules/event";
+import EjectImage from "../../assets/image/Eject.png";
 const MemberData = styled("div")`
   display: flex;
   align-items: center;
@@ -50,6 +51,14 @@ const ButtonImg = styled(Img).attrs({
   hasButton: boolean;
 }>`
   opacity: ${(props) => (props.hasButton ? 1 : 0.2)};
+`;
+const EjectedImg = styled(Img).attrs({
+  src: EjectImage,
+  alt: "Eject",
+})<{
+  ejected: boolean;
+}>`
+  opacity: ${(props) => (props.ejected ? 1 : 0.2)};
 `;
 const StyledTableCell = styled(TableCell)<{ isAlive: boolean }>`
   background-color: ${(props) =>
@@ -85,6 +94,9 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
   const onClickButton = (memberId: MemberId) => {
     dispatch(memberOperations.toggleHasButton({ memberId }));
   };
+  const onClickEjected = (memberId: MemberId) => {
+    dispatch(memberOperations.toggleEjected({ memberId }));
+  };
   return (
     <TableRow>
       <StyledTableCell isAlive={isAlive}>
@@ -117,6 +129,13 @@ const MemberRow: React.FunctionComponent<Props> = ({ member }) => {
             }}
           >
             <ButtonImg hasButton={hasButton} />
+          </IconButton>
+          <IconButton
+            onClick={() => {
+              onClickEjected(member.memberId);
+            }}
+          >
+            <EjectedImg ejected={member.ejected} />
           </IconButton>
         </MemberData>
       </StyledTableCell>
