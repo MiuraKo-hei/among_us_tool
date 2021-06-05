@@ -1,5 +1,5 @@
-// 最大 ボタンx10, 追放・キルx8
-export const RANGE = 8;
+// 最大 追放・キルx13
+export const RANGE = 13;
 
 import RedImage from "./assets/image/Red.png";
 import BlueImage from "./assets/image/Blue.png";
@@ -13,6 +13,9 @@ import PurpleImage from "./assets/image/Purple.png";
 import BrownImage from "./assets/image/Brown.png";
 import CyanImage from "./assets/image/Cyan.png";
 import LimeImage from "./assets/image/Lime.png";
+import RoseImage from "./assets/image/Rose.png";
+import GrayImage from "./assets/image/Gray.png";
+import TanImage from "./assets/image/Tan.png";
 export type ColorName =
   | "Red"
   | "Blue"
@@ -25,7 +28,10 @@ export type ColorName =
   | "Purple"
   | "Brown"
   | "Cyan"
-  | "Lime";
+  | "Lime"
+  | "Rose"
+  | "Gray"
+  | "Tan";
 export type Color = {
   name: ColorName;
   image: string;
@@ -78,6 +84,18 @@ export const colors: Record<ColorName, Color> = {
   Lime: {
     name: "Lime",
     image: LimeImage,
+  },
+  Rose: {
+    name: "Rose",
+    image: RoseImage,
+  },
+  Gray: {
+    name: "Gray",
+    image: GrayImage,
+  },
+  Tan: {
+    name: "Tan",
+    image: TanImage,
   },
 };
 
