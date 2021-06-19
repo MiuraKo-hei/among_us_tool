@@ -16,6 +16,9 @@ import LimeImage from "./assets/image/Lime.png";
 import RoseImage from "./assets/image/Rose.png";
 import GrayImage from "./assets/image/Gray.png";
 import TanImage from "./assets/image/Tan.png";
+import BananaImage from "./assets/image/Banana.png";
+import CoralImage from "./assets/image/Coral.png";
+import MaroonImage from "./assets/image/Maroon.png";
 export type ColorName =
   | "Red"
   | "Blue"
@@ -29,9 +32,12 @@ export type ColorName =
   | "Brown"
   | "Cyan"
   | "Lime"
+  | "Maroon"
   | "Rose"
+  | "Banana"
   | "Gray"
-  | "Tan";
+  | "Tan"
+  | "Coral";
 export type Color = {
   name: ColorName;
   image: string;
@@ -85,9 +91,17 @@ export const colors: Record<ColorName, Color> = {
     name: "Lime",
     image: LimeImage,
   },
+  Maroon: {
+    name: "Maroon",
+    image: MaroonImage,
+  },
   Rose: {
     name: "Rose",
     image: RoseImage,
+  },
+  Banana: {
+    name: "Banana",
+    image: BananaImage,
   },
   Gray: {
     name: "Gray",
@@ -96,6 +110,10 @@ export const colors: Record<ColorName, Color> = {
   Tan: {
     name: "Tan",
     image: TanImage,
+  },
+  Coral: {
+    name: "Coral",
+    image: CoralImage,
   },
 };
 
