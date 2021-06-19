@@ -6,7 +6,7 @@ import storage from "redux-persist/lib/storage";
 import { Persistor } from "redux-persist/es/types";
 
 const persistConfig = {
-  key: "root-v2",
+  key: "root-v3",
   storage,
   blacklist: ["usage"],
 };
