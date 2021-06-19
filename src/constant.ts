@@ -1,5 +1,6 @@
 // 最大 追放・キルx13
 export const RANGE = 13;
+export const MEMBER_MAX = 15;
 
 import RedImage from "./assets/image/Red.png";
 import BlueImage from "./assets/image/Blue.png";

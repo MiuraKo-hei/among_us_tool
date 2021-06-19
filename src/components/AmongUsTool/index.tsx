@@ -9,6 +9,7 @@ import MemberRow from "./MemberRow";
 import EventTargetRow from "./EventTargetRow";
 import AddMemberRow from "./AddMemberRow";
 import Usage from "./Usage";
+import { MEMBER_MAX } from "../../constant";
 
 const Wrapper = styled("div")`
   min-height: 100vh;
@@ -50,7 +51,7 @@ const AmongUsTool: React.FunctionComponent = () => {
             {members.map((member) => (
               <MemberRow member={member} key={member.memberId} />
             ))}
-            {members.length < 10 && <AddMemberRow />}
+            {members.length < MEMBER_MAX && <AddMemberRow />}
           </TableBody>
         </StyledTable>
       </TableContainer>
